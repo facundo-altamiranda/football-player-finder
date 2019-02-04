@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
-import moment from 'moment';
+import { getAge, includes } from '../helpers';
 
 const playerSelector = ({ players: { data } }) => data.map(player => ({
-  age: moment().diff(player.dateOfBirth, 'years'),
+  age: getAge(player.dateOfBirth),
   name: player.name,
   nationality: player.nationality,
   position: player.position,
@@ -14,12 +14,9 @@ const playersDataSelector = createSelector(
   playerSelector,
   filterSelector,
   (players, filters) => players.filter((player) => {
-    const playerAge = !filters.age
-      || player.age === Number(filters.age);
-    const playerName = !filters.name
-      || player.name.toLowerCase().includes(filters.name.toLowerCase());
-    const playerPosition = !filters.position
-      || player.position === filters.position;
+    const playerAge = !filters.age || player.age === Number(filters.age);
+    const playerName = !filters.name || includes(player.name, filters.name);
+    const playerPosition = !filters.position || player.position === filters.position;
 
     return playerAge && playerName && playerPosition;
   }),

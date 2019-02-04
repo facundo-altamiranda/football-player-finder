@@ -81,21 +81,21 @@ class PlayersFilter extends Component {
     ];
 
     return (
-      <Row type="flex" justify="center" gutter={10}>
-        <Col span={7}>
-          <Input name="name" placeholder="Player Name" onChange={this.onChange} />
+      <Row type="flex" justify="center" gutter={10} className="filters">
+        <Col span={6} xl={7}>
+          <Input name="name" placeholder="Player Name" onChange={this.onChange} onPressEnter={this.onSubmit} allowClear />
         </Col>
-        <Col span={7}>
-          <Select name="position" className="selectPostion" placeholder="Position" onChange={this.onSelectChange}>
+        <Col span={6} xl={7}>
+          <Select name="position" className="selectPostion" placeholder="Position" onChange={this.onSelectChange} onDeselect={this.onSubmit} allowClear>
             {
               positionOptions.map(({ value }) => <Option value={value} key={value}>{value}</Option>)
             }
           </Select>
         </Col>
-        <Col span={7}>
-          <Input name="age" placeholder="Age" onChange={this.onChange} />
+        <Col span={6} xl={7}>
+          <Input name="age" placeholder="Age" onChange={this.onChange} onPressEnter={this.onSubmit} allowClear />
         </Col>
-        <Col span={3}>
+        <Col span={6} xl={3}>
           <Button block onClick={this.onSubmit}>
             { 'Search' }
           </Button>
