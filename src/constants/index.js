@@ -28,13 +28,13 @@ export const POSITION_OPTIONS = [
     value: 'Attacking Midfield',
   },
   {
+    value: 'Central Midfield',
+  },
+  {
     value: 'Centre-Back',
   },
   {
     value: 'Centre-Forward',
-  },
-  {
-    value: 'Central Midfield',
   },
   {
     value: 'Defensive Midfield',
@@ -43,13 +43,13 @@ export const POSITION_OPTIONS = [
     value: 'Keeper',
   },
   {
-    value: 'Left-Back',
-  },
-  {
     value: 'Left Midfield',
   },
   {
     value: 'Left Wing',
+  },
+  {
+    value: 'Left-Back',
   },
   {
     value: 'Right-Back',

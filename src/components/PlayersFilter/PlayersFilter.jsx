@@ -5,6 +5,7 @@ import {
   Button,
   Col,
   Input,
+  InputNumber,
   Row,
   Select,
 } from 'antd';
@@ -25,15 +26,22 @@ class PlayersFilter extends Component {
     position: '',
   };
 
-  onChange = (event) => {
-    const { target: { name, value } } = event;
-
+  onChange = (name, value) => {
     this.setState({ [name]: value });
   }
 
-  onSelectChange = (value) => {
-    this.setState({ position: value });
+  onNameChange = (event) => {
+    const { target: { name, value } } = event;
+    const onlyLetters = /^[a-zA-Z]+$/;
+
+    if (onlyLetters.test(value) || value === '') {
+      this.onChange(name, value);
+    }
   }
+
+  onNumberChange = value => this.onChange('age', value);
+
+  onPositionChange = value => this.onChange('position', value);
 
   onSubmit = () => {
     const { age, name, position } = this.state;
@@ -48,20 +56,22 @@ class PlayersFilter extends Component {
   }
 
   render() {
+    const { age, name, position } = this.state;
+
     return (
       <Row type="flex" justify="center" gutter={10} className="filters">
         <Col span={6} xl={7}>
-          <Input name="name" placeholder="Player Name" onChange={this.onChange} onPressEnter={this.onSubmit} allowClear />
+          <Input name="name" placeholder="Player Name" onChange={this.onNameChange} value={name} onPressEnter={this.onSubmit} allowClear />
         </Col>
         <Col span={6} xl={7}>
-          <Select name="position" className="selectPostion" placeholder="Position" onChange={this.onSelectChange} onDeselect={this.onSubmit} allowClear>
+          <Select name="position" className="full-width" placeholder="Position" onChange={this.onPositionChange} value={position} onDeselect={this.onSubmit} allowClear>
             {
               POSITION_OPTIONS.map(({ value }) => <Option value={value} key={value}>{value}</Option>)
             }
           </Select>
         </Col>
         <Col span={6} xl={7}>
-          <Input name="age" placeholder="Age" onChange={this.onChange} onPressEnter={this.onSubmit} allowClear />
+          <InputNumber name="age" className="full-width" placeholder="Age" min={18} max={40} onChange={this.onNumberChange} value={age} onPressEnter={this.onSubmit} allowClear />
         </Col>
         <Col span={6} xl={3}>
           <Button block onClick={this.onSubmit}>
