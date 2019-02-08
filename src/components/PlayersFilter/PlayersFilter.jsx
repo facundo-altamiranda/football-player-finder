@@ -5,7 +5,6 @@ import {
   Button,
   Col,
   Input,
-  InputNumber,
   Row,
   Select,
 } from 'antd';
@@ -21,9 +20,9 @@ class PlayersFilter extends Component {
   };
 
   state = {
-    age: '',
-    name: '',
-    position: '',
+    age: undefined,
+    name: undefined,
+    position: undefined,
   };
 
   onChange = (name, value) => {
@@ -39,7 +38,15 @@ class PlayersFilter extends Component {
     }
   }
 
-  onNumberChange = value => this.onChange('age', value);
+  onNumberChange = (event) => {
+    const { target: { name, value } } = event;
+    const oneNumberRegex = /([1-4])/;
+    const fullRegex = /(1[89]|[23][0-9]|4[0])/;
+
+    if (value === '' || ((value && value.length < 2) && oneNumberRegex.test(value)) || ((value && value.length === 2) && fullRegex.test(value))) {
+      this.onChange(name, value);
+    }
+  }
 
   onPositionChange = value => this.onChange('position', value);
 
@@ -71,7 +78,7 @@ class PlayersFilter extends Component {
           </Select>
         </Col>
         <Col span={6} xl={7}>
-          <InputNumber name="age" className="full-width" placeholder="Age" min={18} max={40} onChange={this.onNumberChange} value={age} onPressEnter={this.onSubmit} allowClear />
+          <Input name="age" placeholder="Age" type="number" min={18} max={40} onChange={this.onNumberChange} value={age} onPressEnter={this.onSubmit} allowClear />
         </Col>
         <Col span={6} xl={3}>
           <Button block onClick={this.onSubmit}>
