@@ -12,7 +12,7 @@ import playersDataSelector from '../../selectors/players';
 import { fetchPlayers } from '../../actions/players';
 import { TABLE_COLUMNS } from '../../constants';
 
-class PlayersTable extends Component {
+export class PlayersTable extends Component {
   static propTypes = {
     fetchPlayers: func.isRequired,
     players: arrayOf(shape({

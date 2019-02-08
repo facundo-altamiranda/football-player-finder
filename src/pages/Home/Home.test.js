@@ -27,7 +27,7 @@ describe('Home', () => {
       expect(row).toHaveLength(1);
     });
 
-    it('should have prop type equal to flex and justify equal to center', () => {
+    it('should have prop type equals flex and justify equals center', () => {
       expect(row.prop('type')).toEqual('flex');
       expect(row.prop('justify')).toEqual('center');
     });
@@ -43,7 +43,7 @@ describe('Home', () => {
         expect(col).toHaveLength(1);
       });
 
-      it('should have prop span equal to 20', () => {
+      it('should have prop span equals 20', () => {
         expect(col.prop('span')).toEqual(20);
       });
 
@@ -58,11 +58,11 @@ describe('Home', () => {
           expect(h2).toHaveLength(1);
         });
 
-        it('should have prop className equal to title', () => {
+        it('should have prop className equals title', () => {
           expect(h2.prop('className')).toEqual('title');
         });
 
-        it('should have text equal to Football Player Finder', () => {
+        it('should have text equals Football Player Finder', () => {
           const text = h2.text();
 
           expect(text).toEqual('Football Player Finder');

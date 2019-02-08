@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`constants should match snapshot 1`] = `
+Object {
+  "API_URL": "https://football-players-b31f2.firebaseio.com/players.json",
+  "POSITION_OPTIONS": Array [
+    Object {
+      "value": "Attacking Midfield",
+    },
+    Object {
+      "value": "Central Midfield",
+    },
+    Object {
+      "value": "Centre-Back",
+    },
+    Object {
+      "value": "Centre-Forward",
+    },
+    Object {
+      "value": "Defensive Midfield",
+    },
+    Object {
+      "value": "Keeper",
+    },
+    Object {
+      "value": "Left Midfield",
+    },
+    Object {
+      "value": "Left Wing",
+    },
+    Object {
+      "value": "Left-Back",
+    },
+    Object {
+      "value": "Right-Back",
+    },
+  ],
+  "TABLE_COLUMNS": Array [
+    Object {
+      "dataIndex": "name",
+      "key": "name",
+      "title": "Player",
+    },
+    Object {
+      "dataIndex": "position",
+      "key": "position",
+      "title": "Position",
+    },
+    Object {
+      "dataIndex": "nationality",
+      "key": "nationality",
+      "title": "Nationality",
+    },
+    Object {
+      "dataIndex": "age",
+      "key": "age",
+      "title": "Age",
+    },
+  ],
+}
+`;

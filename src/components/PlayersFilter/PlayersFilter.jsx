@@ -14,7 +14,7 @@ import './PlayersFilter.scss';
 
 const { Option } = Select;
 
-class PlayersFilter extends Component {
+export class PlayersFilter extends Component {
   static propTypes = {
     applyFilter: func.isRequired,
   };
